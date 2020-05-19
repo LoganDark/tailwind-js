@@ -1,0 +1,20 @@
+{
+	"name": "tailwind-js",
+	"version": "1.0.0",
+	"description": "automatically generates a Tailwind-LIKE stylesheet from a live DOM",
+	"main": "src/main.ts",
+	"scripts": {
+		"build": "webpack",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "LoganDark",
+	"license": "GPL-3.0-or-later",
+	"dependencies": {
+		"@types/node": "^14.0.1",
+		"@types/webpack": "^4.41.13",
+		"ts-loader": "^7.0.4",
+		"ts-node": "^8.10.1",
+		"typescript": "^3.9.2",
+		"webpack": "^4.43.0"
+	}
+}
