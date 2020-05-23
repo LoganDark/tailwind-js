@@ -5,7 +5,7 @@ import {TjsUpgradedConfig}  from '../TjsUpgradedConfig'
 
 export class TjsOverflowModule extends TjsDynamicModule {
 	constructor(config: TjsUpgradedConfig) {
-		super(config, 'boxSizing')
+		super(config, 'overflow')
 	}
 
 	clone(): this {
