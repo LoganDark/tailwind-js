@@ -25,6 +25,7 @@ export class Generator extends Group implements IGenerator {
 		module.init(this)
 		module.inject(this._modules)
 		this.emit('childAdded', module)
+		this.emit('cssChanged')
 	}
 
 	genCache: {[k: string]: boolean} = {}
@@ -44,6 +45,10 @@ export class Generator extends Group implements IGenerator {
 			if (module.classLooksInteresting(classname)) {
 				generated = module.genClass(classname) || generated
 			}
+		}
+
+		if (generated) {
+			this.emit('cssChanged')
 		}
 
 		return this.genCache[classname] = generated

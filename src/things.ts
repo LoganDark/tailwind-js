@@ -63,20 +63,29 @@ export interface IProps extends IBaseThing {
 export type IGroupEvents = {
 	/**
 	 * Emitted after a child is added directly under this group
+	 * {@link cssChanged} is always emitted right after
 	 * @param child The child that was added
 	 */
 	childAdded: (child: IThing) => void,
 	/**
 	 * Emitted after a child is removed from directly under this group
+	 * {@link cssChanged} is always emitted right after
 	 * @param child The child that was removed
 	 */
 	childRemoved: (child: IThing) => void,
 	/**
 	 * Emitted after a child is merged into this group's children
+	 * {@link cssChanged} is always emitted right after
 	 * @param spec The child that was merged in
 	 * @param mergedInto The child that it was merged into, after merging
 	 */
-	mergedIn: (spec: IThing, mergedInto: IThing) => void
+	mergedIn: (spec: IThing, mergedInto: IThing) => void,
+	/**
+	 * Emitted whenever the CSS text changes
+	 *
+	 * Fired after any other event
+	 */
+	cssChanged: () => void
 }
 
 /**

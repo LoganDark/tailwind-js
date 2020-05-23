@@ -38,6 +38,7 @@ export abstract class Group extends EventEmitter<IGroupEvents> implements IGroup
 	addChild(child: IThing) {
 		this.children.push(child)
 		this.emit('childAdded', child)
+		this.emit('cssChanged')
 	}
 
 	removeChild(child: IThing): boolean {
@@ -49,6 +50,7 @@ export abstract class Group extends EventEmitter<IGroupEvents> implements IGroup
 
 		this.children.splice(index, 1)
 		this.emit('childRemoved', child)
+		this.emit('cssChanged')
 		return true
 	}
 
@@ -76,6 +78,7 @@ export abstract class Group extends EventEmitter<IGroupEvents> implements IGroup
 				if (isProps(equal) && equal.sameSelectorAs(spec)) {
 					equal.mergeIn(spec)
 					this.emit('mergedIn', spec, equal)
+					this.emit('cssChanged')
 					return equal
 				}
 			}
@@ -87,6 +90,7 @@ export abstract class Group extends EventEmitter<IGroupEvents> implements IGroup
 					}
 
 					this.emit('mergedIn', spec, equal)
+					this.emit('cssChanged')
 					return equal
 				}
 			}
@@ -97,6 +101,7 @@ export abstract class Group extends EventEmitter<IGroupEvents> implements IGroup
 		const copy = spec.clone()
 		this.children.push(copy)
 		this.emit('mergedIn', spec, copy)
+		this.emit('cssChanged')
 		return copy
 	}
 
