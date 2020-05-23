@@ -22,10 +22,10 @@ export interface TjsCorePluginConfigs {
 	container: TjsContainerModuleConfig
 }
 
-export type TjsCorePlugin = 'preflight' | 'container' | 'boxSizing' | 'display'
+export type TjsCorePluginName = 'preflight' | 'container' | 'boxSizing' | 'display'
 
 export type TjsCorePlugins = {
-	[plugin in TjsCorePlugin]: boolean
+	[plugin in TjsCorePluginName]: boolean
 }
 
 export interface TjsConfig {

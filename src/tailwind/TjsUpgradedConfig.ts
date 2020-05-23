@@ -1,5 +1,5 @@
-import {TjsConfig, TjsCorePlugin} from './TjsConfig'
-import {TjsScreenRangeGroup}      from './TjsScreenRangeGroup'
+import {TjsConfig, TjsCorePluginName} from './TjsConfig'
+import {TjsScreenRangeGroup}          from './TjsScreenRangeGroup'
 
 export class TjsUpgradedConfig {
 	config: TjsConfig
@@ -8,7 +8,7 @@ export class TjsUpgradedConfig {
 		this.config = config
 	}
 
-	corePluginEnabled(corePlugin: TjsCorePlugin) {
+	corePluginEnabled(corePlugin: TjsCorePluginName) {
 		return this.config.corePlugins[corePlugin]
 	}
 

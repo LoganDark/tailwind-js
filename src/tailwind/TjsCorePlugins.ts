@@ -4,9 +4,9 @@ import {TjsBoxSizingModule} from './modules/TjsBoxSizingModule'
 import {TjsContainerModule} from './modules/TjsContainerModule'
 import {TjsDisplayModule}   from './modules/TjsDisplayModule'
 import {TjsPreflightModule} from './modules/TjsPreflightModule'
-import {TjsCorePlugin}      from './TjsConfig'
+import {TjsCorePluginName}  from './TjsConfig'
 
-export const tjsCorePlugins = new Map<TjsCorePlugin, (TjsConfig) => IModule>()
+export const tjsCorePlugins = new Map<TjsCorePluginName, (TjsConfig) => IModule>()
 
 tjsCorePlugins.set('preflight', config => new TjsPreflightModule(config))
 tjsCorePlugins.set('container', config => new TjsContainerModule(config))
