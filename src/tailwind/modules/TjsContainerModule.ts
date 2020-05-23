@@ -1,16 +1,13 @@
-import {GroupModule}       from '../../GroupModule'
 import {Props}             from '../../Props'
 import {IGroup}            from '../../things'
+import {TjsGroupModule}    from '../TjsGroupModule'
 import {TjsUpgradedConfig} from '../TjsUpgradedConfig'
 
 // @ts-ignore
 
-export class TjsContainerModule extends GroupModule {
-	config: TjsUpgradedConfig
-
+export class TjsContainerModule extends TjsGroupModule {
 	constructor(config: TjsUpgradedConfig) {
-		super()
-		this.config = config
+		super(config)
 	}
 
 	clone(): this {
@@ -18,7 +15,7 @@ export class TjsContainerModule extends GroupModule {
 	}
 
 	shouldMergeWith(other: IGroup): boolean {
-		return other instanceof TjsContainerModule
+		return super.shouldMergeWith(other) && other instanceof TjsContainerModule
 	}
 
 	beingMergedInto(other: IGroup) {
