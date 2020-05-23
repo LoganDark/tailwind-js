@@ -3,7 +3,7 @@ import {TjsGroupModule}    from './TjsGroupModule'
 import {TjsUpgradedConfig} from './TjsUpgradedConfig'
 
 /**
- * Automatically keeps a cache of generated modules, and allows you to focus on
+ * Automatically keeps a cache of generated classes, and allows you to focus on
  * generating your classes when needed.
  *
  * Usage: Implement {@link clone}, {@link classLooksInteresting}, and
