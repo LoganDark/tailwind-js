@@ -3,6 +3,9 @@ import {TjsUpgradedConfig}             from '../TjsUpgradedConfig'
 // @ts-ignore
 import preflight                       from './preflight.css'
 
+/**
+ * Just static text that inserts the preflight at the top of the generated CSS
+ */
 export class TjsPreflightModule implements IModule, ILiteral {
 	config: TjsUpgradedConfig
 

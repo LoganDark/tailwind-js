@@ -16,7 +16,8 @@ interface IBaseThing {
 	toCssText(): string
 
 	/**
-	 * Copies this group
+	 * Create a new instance of this group with the exact same properties as the
+	 * existing one. They should act exactly the same
 	 */
 	clone(): this
 }
@@ -180,6 +181,9 @@ export interface IModule extends IPublicModule {
 
 	/**
 	 * Returns true if the classname looks nice
+	 *
+	 * {@link genClass} will only be called for this classname if this method
+	 * returns true
 	 */
 	classLooksInteresting(classname: string): boolean
 
