@@ -85,6 +85,8 @@ export abstract class Group extends EventEmitter<IGroupEvents> implements IGroup
 		} else if (isGroup(spec)) {
 			for (const equal of this.children) {
 				if (isGroup(equal) && equal.shouldMergeWith(spec)) {
+					spec.beingMergedInto(equal)
+
 					for (const childSpec of spec.getChildren()) {
 						equal.mergeIn(childSpec)
 					}
@@ -113,4 +115,6 @@ export abstract class Group extends EventEmitter<IGroupEvents> implements IGroup
 	}
 
 	abstract shouldMergeWith(other: IGroup): boolean
+
+	beingMergedInto(other: IGroup) {}
 }

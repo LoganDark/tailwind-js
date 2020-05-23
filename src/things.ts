@@ -126,9 +126,16 @@ export interface IGroup extends IBaseThing, EventEmitter<IGroupEvents> {
 	extractClass(classname: string): IThing[]
 
 	/**
-	 * Used in merging behavior.
+	 * Used in merging behavior. Return true if `other` should be merged into
+	 * this (all its children added via {@link mergeIn} calls)
 	 */
 	shouldMergeWith(other: IGroup): boolean
+
+	/**
+	 * Called when your group is being merged into another. Any caches, etc.
+	 * should be added to the other group.
+	 */
+	beingMergedInto(other: IGroup)
 }
 
 /**

@@ -21,6 +21,14 @@ export class TjsContainerModule extends GroupModule {
 		return other instanceof TjsContainerModule
 	}
 
+	beingMergedInto(other: IGroup) {
+		if (!(other instanceof TjsContainerModule)) {
+			throw new TypeError('merging with invalid group')
+		}
+
+		other.generated = other.generated || this.generated
+	}
+
 	classLooksInteresting(classname: string) {
 		return classname === 'container' && !this.hasClass(classname)
 	}
