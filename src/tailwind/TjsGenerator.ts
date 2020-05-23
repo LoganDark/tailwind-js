@@ -47,8 +47,8 @@ export class TjsGenerator extends Generator {
 	 * @returns `base`
 	 */
 	static deepMerge<T extends object>(base: T, patch: RecursivePartial<T>): T {
-		for (const key in Object.keys(base)) {
-			if (patch.hasOwnProperty(key)) {
+		for (const key in Object.keys(patch)) {
+			if (base.hasOwnProperty(key)) {
 				const val = patch[key]
 
 				// noinspection JSDeprecatedSymbols
@@ -57,6 +57,8 @@ export class TjsGenerator extends Generator {
 				} else {
 					base[key] = val
 				}
+			} else {
+				base[key] = patch[key]
 			}
 		}
 
