@@ -1,13 +1,13 @@
 import {Generator}                                     from '../Generator'
 import {defaultTjsConfig, RecursivePartial, TjsConfig} from './TjsConfig'
-import {TjsCorePlugins}                                from './TjsCorePlugins'
+import {tjsCorePlugins}                                from './TjsCorePlugins'
 import {TjsUpgradedConfig}                             from './TjsUpgradedConfig'
 
 export class TjsGenerator extends Generator {
 	config: TjsUpgradedConfig
 
 	registerModules(config: TjsUpgradedConfig) {
-		TjsCorePlugins.forEach((factory, key) => {
+		tjsCorePlugins.forEach((factory, key) => {
 			if (config.corePluginEnabled(key)) {
 				this.addChild(factory(config))
 			}
