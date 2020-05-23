@@ -22,7 +22,7 @@ export interface TjsCorePluginConfigs {
 	container: TjsContainerModuleConfig
 }
 
-export type TjsCorePluginName = 'preflight' | 'container' | 'boxSizing' | 'display' | 'float' | 'clear' | 'objectFit' | 'objectPosition' | 'overflow'
+export type TjsCorePluginName = 'preflight' | 'container' | 'boxSizing' | 'display' | 'float' | 'clear' | 'objectFit' | 'objectPosition' | 'overflow' | 'position'
 
 export type TjsCorePlugins = {
 	[plugin in TjsCorePluginName]: boolean
@@ -65,6 +65,7 @@ export const defaultTjsConfig: TjsConfig = {
 		clear         : true,
 		objectFit     : true,
 		objectPosition: true,
-		overflow      : true
+		overflow      : true,
+		position      : true
 	}
 }

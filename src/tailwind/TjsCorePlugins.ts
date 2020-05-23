@@ -8,6 +8,7 @@ import {TjsFloatModule}          from './modules/TjsFloatModule'
 import {TjsObjectFitModule}      from './modules/TjsObjectFitModule'
 import {TjsObjectPositionModule} from './modules/TjsObjectPositionModule'
 import {TjsOverflowModule}       from './modules/TjsOverflowModule'
+import {TjsPositionModule}       from './modules/TjsPositionModule'
 import {TjsPreflightModule}      from './modules/TjsPreflightModule'
 import {TjsCorePluginName}       from './TjsConfig'
 
@@ -22,3 +23,4 @@ tjsCorePlugins.set('clear', config => new TjsClearModule(config))
 tjsCorePlugins.set('objectFit', config => new TjsObjectFitModule(config))
 tjsCorePlugins.set('objectPosition', config => new TjsObjectPositionModule(config))
 tjsCorePlugins.set('overflow', config => new TjsOverflowModule(config))
+tjsCorePlugins.set('position', config => new TjsPositionModule(config))
