@@ -25,6 +25,8 @@ export class TjsPreflightModule implements IModule, ILiteral {
 		return new TjsPreflightModule(this.config) as this
 	}
 
+	// needed for IModule compatibility
+	// noinspection JSUnusedGlobalSymbols
 	generator: IGenerator | null = null
 
 	init(generator: IGenerator) {}
