@@ -1,6 +1,6 @@
 import {Props}                      from '../Props'
 import {IGroup, IProps, Properties} from '../things'
-import {TjsGroupModule}             from './TjsGroupModule'
+import {TjsDynamicModule}           from './TjsDynamicModule'
 import {TjsUpgradedConfig}          from './TjsUpgradedConfig'
 
 /**
@@ -43,7 +43,7 @@ export type TjsSimpleDefs = {[classname: string]: Properties}
  * a new instance of some "simple" module that automatically keeps track of
  * those classes.
  */
-export class TjsSimpleModule extends TjsGroupModule {
+export class TjsSimpleModule extends TjsDynamicModule {
 	defs: TjsSimpleDefs
 
 	constructor(config: TjsUpgradedConfig, defs: TjsSimpleDefs) {
@@ -65,21 +65,9 @@ export class TjsSimpleModule extends TjsGroupModule {
 		return this.defs.hasOwnProperty(classname)
 	}
 
-	protected cache: {[classname: string]: boolean} = {}
-
 	protected genProps(classname: string): IProps {
 		const props = new Props(classname)
 		props.withProps(this.defs[classname])
 		return props
-	}
-
-	genClass(classname: string): boolean {
-		if (this.cache.hasOwnProperty(classname)) {
-			return this.cache[classname]
-		}
-
-		this.addChild(this.genProps(classname))
-
-		return this.cache[classname] = true
 	}
 }
