@@ -1,7 +1,7 @@
-import {Props}              from '../Props'
-import {IGroup, Properties} from '../things'
-import {TjsGroupModule}     from './TjsGroupModule'
-import {TjsUpgradedConfig}  from './TjsUpgradedConfig'
+import {Props}                      from '../Props'
+import {IGroup, IProps, Properties} from '../things'
+import {TjsGroupModule}             from './TjsGroupModule'
+import {TjsUpgradedConfig}          from './TjsUpgradedConfig'
 
 /**
  * These definitions, well, define which classes that are going to be in your
@@ -67,14 +67,18 @@ export class TjsSimpleModule extends TjsGroupModule {
 
 	protected cache: {[classname: string]: boolean} = {}
 
+	protected genProps(classname: string): IProps {
+		const props = new Props(classname)
+		props.withProps(this.defs[classname])
+		return props
+	}
+
 	genClass(classname: string): boolean {
 		if (this.cache.hasOwnProperty(classname)) {
 			return this.cache[classname]
 		}
 
-		const props = new Props(classname)
-		props.withProps(this.defs[classname])
-		this.addChild(props)
+		this.addChild(this.genProps(classname))
 
 		return this.cache[classname] = true
 	}
