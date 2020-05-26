@@ -21,6 +21,10 @@ export class TjsFloatModule extends TjsSimpleModule {
 	protected genProps(classname: string): IProps | null {
 		const props = super.genProps(classname)
 
+		if (props === null) {
+			return null
+		}
+
 		if (classname === 'clearfix') {
 			props.selectorSuffix = '::after'
 		}

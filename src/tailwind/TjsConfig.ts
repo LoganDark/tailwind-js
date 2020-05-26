@@ -2,7 +2,10 @@ export type RecursivePartial<T> = T extends Object ? {
 	[P in keyof T]?: RecursivePartial<T[P]>
 } : T
 
-export type TjsScreenRange = string | {min: string, max?: string} | {max?: string, min: string} | {raw: string}
+export type TjsScreenRangeWithMin = {min: string, max?: string}
+export type TjsScreenRangeWithMax = {min?: string, max: string}
+export type TjsScreenRangeWithRaw = {raw: string}
+export type TjsScreenRange = string | TjsScreenRangeWithMin | TjsScreenRangeWithMax | TjsScreenRangeWithRaw
 export type TjsScreenBreakpoint = TjsScreenRange | TjsScreenRange[]
 
 export interface TjsScreens {

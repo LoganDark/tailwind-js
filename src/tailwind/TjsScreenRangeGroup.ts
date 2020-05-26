@@ -1,5 +1,5 @@
-import {MediaQueryGroup}                     from '../MediaQueryGroup'
-import {TjsScreenBreakpoint, TjsScreenRange} from './TjsConfig'
+import {MediaQueryGroup}                                                                                          from '../MediaQueryGroup'
+import {TjsScreenBreakpoint, TjsScreenRange, TjsScreenRangeWithMax, TjsScreenRangeWithMin, TjsScreenRangeWithRaw} from './TjsConfig'
 
 export class TjsScreenRangeGroup extends MediaQueryGroup {
 	static mediaQueryFor(range: TjsScreenRange) {
@@ -11,7 +11,7 @@ export class TjsScreenRangeGroup extends MediaQueryGroup {
 			}
 
 			if (range.hasOwnProperty('raw')) {
-				const raw = range['raw']
+				const raw = (range as TjsScreenRangeWithRaw).raw
 
 				if (typeof raw !== 'string') {
 					throw new TypeError('Invalid TjsScreenRange')
@@ -27,12 +27,12 @@ export class TjsScreenRangeGroup extends MediaQueryGroup {
 				}
 
 				if (hasMin && hasMax) {
-					return `(min-width: ${range['min']}) and (max-width: ${range['max']})`
+					return `(min-width: ${(range as TjsScreenRangeWithMin)['min']}) and (max-width: ${(range as TjsScreenRangeWithMax)['max']})`
 				} else {
 					if (hasMin) {
-						return `(min-width: ${range['min']})`
+						return `(min-width: ${(range as TjsScreenRangeWithMin)['min']})`
 					} else {
-						return `(max-width: ${range['max']})`
+						return `(max-width: ${(range as TjsScreenRangeWithMax)['max']})`
 					}
 				}
 			}
@@ -40,9 +40,9 @@ export class TjsScreenRangeGroup extends MediaQueryGroup {
 	}
 
 	range: TjsScreenRange
-	name: string | null
+	name: string
 
-	constructor(range: TjsScreenRange, name: string | null = null) {
+	constructor(range: TjsScreenRange, name: string) {
 		super(TjsScreenRangeGroup.mediaQueryFor(range))
 		this.range = range
 		this.name = name
@@ -52,7 +52,7 @@ export class TjsScreenRangeGroup extends MediaQueryGroup {
 		return new TjsScreenRangeGroup(this.range, this.name) as this
 	}
 
-	static groupsForBreakpoint(breakpoint: TjsScreenBreakpoint, name: string | null = null): TjsScreenRangeGroup[] {
+	static groupsForBreakpoint(breakpoint: TjsScreenBreakpoint, name: string): TjsScreenRangeGroup[] {
 		// noinspection JSDeprecatedSymbols
 		if (!Array.isArray(breakpoint)) {
 			return this.groupsForBreakpoint([breakpoint], name)
