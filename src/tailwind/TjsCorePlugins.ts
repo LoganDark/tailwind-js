@@ -5,6 +5,7 @@ import {TjsClearModule}          from './modules/TjsClearModule'
 import {TjsContainerModule}      from './modules/TjsContainerModule'
 import {TjsDisplayModule}        from './modules/TjsDisplayModule'
 import {TjsFloatModule}          from './modules/TjsFloatModule'
+import {TjsInsetModule}          from './modules/TjsInsetModule'
 import {TjsObjectFitModule}      from './modules/TjsObjectFitModule'
 import {TjsObjectPositionModule} from './modules/TjsObjectPositionModule'
 import {TjsOverflowModule}       from './modules/TjsOverflowModule'
@@ -25,3 +26,4 @@ tjsCorePlugins.set('objectFit', config => new TjsObjectFitModule(config))
 tjsCorePlugins.set('objectPosition', config => new TjsObjectPositionModule(config))
 tjsCorePlugins.set('overflow', config => new TjsOverflowModule(config))
 tjsCorePlugins.set('position', config => new TjsPositionModule(config))
+tjsCorePlugins.set('inset', config => new TjsInsetModule(config))

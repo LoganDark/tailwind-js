@@ -12,8 +12,15 @@ export interface TjsScreens {
 	[name: string]: TjsScreenBreakpoint
 }
 
+export type TjsSpacingCallback = (unit: string) => string
+
+export interface TjsSpacing {
+	[key: string]: string | TjsSpacingCallback
+}
+
 export interface TjsTheme {
-	screens: TjsScreens
+	screens: TjsScreens,
+	spacing: TjsSpacing
 }
 
 export interface TjsContainerModuleConfig {
@@ -22,10 +29,11 @@ export interface TjsContainerModuleConfig {
 }
 
 export interface TjsCorePluginConfigs {
-	container: TjsContainerModuleConfig
+	container: TjsContainerModuleConfig,
+	inset: TjsSpacing
 }
 
-export type TjsCorePluginName = 'preflight' | 'container' | 'boxSizing' | 'display' | 'float' | 'clear' | 'objectFit' | 'objectPosition' | 'overflow' | 'position'
+export type TjsCorePluginName = 'preflight' | 'container' | 'boxSizing' | 'display' | 'float' | 'clear' | 'objectFit' | 'objectPosition' | 'overflow' | 'position' | 'inset'
 
 export type TjsCorePlugins = {
 	[plugin in TjsCorePluginName]: boolean
@@ -54,10 +62,17 @@ export const defaultTjsConfig: TjsConfig = {
 			dark: {'raw': '(prefers-color-scheme: dark)'}
 			// => @media (prefers-color-scheme: dark) { ... }
 		},
+		spacing  : {
+			'^[-+]?\\d+$'  : (unit) => (+unit * 0.25) + 'rem',
+			'^[-+]?\\d+px$': (unit) => unit,
+			'px'           : '1px',
+			'auto'         : 'auto'
+		},
 		container: {
 			center : false,
 			padding: ''
-		}
+		},
+		inset    : {}
 	},
 	corePlugins: {
 		preflight     : true,
@@ -69,6 +84,7 @@ export const defaultTjsConfig: TjsConfig = {
 		objectFit     : true,
 		objectPosition: true,
 		overflow      : true,
-		position      : true
+		position      : true,
+		inset         : true
 	}
 }
