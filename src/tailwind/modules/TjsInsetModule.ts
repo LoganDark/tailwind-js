@@ -1,9 +1,10 @@
-import {Props}                               from '../../Props'
-import {Properties}                          from '../../things'
-import {TjsUnitedClassname, TjsUnitedModule} from '../TjsUnitedModule'
-import {TjsUpgradedConfig}                   from '../TjsUpgradedConfig'
+import {Props}              from '../../Props'
+import {Properties}         from '../../things'
+import {TjsSpacingModule}   from '../TjsSpacingModule'
+import {TjsUnitedClassname} from '../TjsUnitedModule'
+import {TjsUpgradedConfig}  from '../TjsUpgradedConfig'
 
-export class TjsInsetModule extends TjsUnitedModule {
+export class TjsInsetModule extends TjsSpacingModule {
 	constructor(config: TjsUpgradedConfig) {
 		super(config)
 

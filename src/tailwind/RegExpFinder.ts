@@ -24,7 +24,10 @@ export class RegExpFinder<T> {
 	}
 
 	addAll(regexps: ReadonlyArray<RegExpFinderEntry<T>>) {
-		this._entries.splice(this._entries.length, 0, ...regexps)
+		for (const entry of regexps) {
+			this._entries.push([...entry])
+		}
+
 		return this
 	}
 

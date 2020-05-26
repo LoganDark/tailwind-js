@@ -33,7 +33,7 @@ export interface TjsCorePluginConfigs {
 	inset: TjsSpacing
 }
 
-export type TjsCorePluginName = 'preflight' | 'container' | 'boxSizing' | 'display' | 'float' | 'clear' | 'objectFit' | 'objectPosition' | 'overflow' | 'position' | 'inset'
+export type TjsCorePluginName = 'preflight' | 'container' | 'boxSizing' | 'display' | 'float' | 'clear' | 'objectFit' | 'objectPosition' | 'overflow' | 'position' | 'inset' | 'visibility' | 'zIndex'
 
 export type TjsCorePlugins = {
 	[plugin in TjsCorePluginName]: boolean
@@ -63,10 +63,10 @@ export const defaultTjsConfig: TjsConfig = {
 			// => @media (prefers-color-scheme: dark) { ... }
 		},
 		spacing  : {
-			'^[-+]?\\d+$'  : (unit) => (+unit * 0.25) + 'rem',
-			'^[-+]?\\d+px$': (unit) => unit,
-			'px'           : '1px',
-			'auto'         : 'auto'
+			'^[-+]?(?:\\d+\\.?|\\d*\\.\\d+)$': (unit) => (+unit * 0.25) + 'rem',
+			'^[-+]?\\d+px$'                  : (unit) => unit,
+			'px'                             : '1px',
+			'auto'                           : 'auto'
 		},
 		container: {
 			center : false,
@@ -85,6 +85,8 @@ export const defaultTjsConfig: TjsConfig = {
 		objectPosition: true,
 		overflow      : true,
 		position      : true,
-		inset         : true
+		inset         : true,
+		visibility    : true,
+		zIndex        : true
 	}
 }

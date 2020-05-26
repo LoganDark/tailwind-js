@@ -11,6 +11,8 @@ import {TjsObjectPositionModule} from './modules/TjsObjectPositionModule'
 import {TjsOverflowModule}       from './modules/TjsOverflowModule'
 import {TjsPositionModule}       from './modules/TjsPositionModule'
 import {TjsPreflightModule}      from './modules/TjsPreflightModule'
+import {TjsVisibilityModule}     from './modules/TjsVisibilityModule'
+import {TjsZIndexModule}         from './modules/TjsZIndexModule'
 import {TjsCorePluginName}       from './TjsConfig'
 import {TjsUpgradedConfig}       from './TjsUpgradedConfig'
 
@@ -27,3 +29,5 @@ tjsCorePlugins.set('objectPosition', config => new TjsObjectPositionModule(confi
 tjsCorePlugins.set('overflow', config => new TjsOverflowModule(config))
 tjsCorePlugins.set('position', config => new TjsPositionModule(config))
 tjsCorePlugins.set('inset', config => new TjsInsetModule(config))
+tjsCorePlugins.set('visibility', config => new TjsVisibilityModule(config))
+tjsCorePlugins.set('zIndex', config => new TjsZIndexModule(config))

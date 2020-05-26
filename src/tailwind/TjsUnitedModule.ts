@@ -1,9 +1,7 @@
 import {IProps}                          from '../things'
 import {RegExpFinder, RegExpFinderMatch} from './RegExpFinder'
-import {TjsSpacing, TjsSpacingCallback}  from './TjsConfig'
 import {TjsDynamicModule}                from './TjsDynamicModule'
 import {TjsUpgradedConfig}               from './TjsUpgradedConfig'
-import escapeStringRegexp = require('escape-string-regexp')
 
 export interface TjsUnitedClassname {
 	prefix: RegExpMatchArray | null
@@ -21,36 +19,14 @@ export type TjsUnitedMatch = RegExpFinderMatch<TjsUnitedCallback>
 
 export class TjsUnitedModule extends TjsDynamicModule {
 	readonly types: RegExpFinder<TjsUnitedCallback>
-	protected readonly spacingCallbacks: RegExpFinder<TjsSpacingCallback> = new RegExpFinder()
 
-	constructor(config: TjsUpgradedConfig, types: RegExpFinder<TjsUnitedCallback> = new RegExpFinder()) {
+	protected constructor(config: TjsUpgradedConfig, types: RegExpFinder<TjsUnitedCallback> = new RegExpFinder()) {
 		super(config)
 		this.types = types
-		this.loadSpacing(config.config.theme.spacing)
-	}
-
-	protected loadSpacing(spacing: TjsSpacing) {
-		for (const key of Object.keys(spacing)) {
-			const val = spacing[key]
-
-			if (typeof val === 'string') {
-				this.spacingCallbacks.add(
-					new RegExp('^' + escapeStringRegexp(key) + '$'),
-					() => val
-				)
-			} else {
-				this.spacingCallbacks.add(
-					new RegExp(key),
-					val
-				)
-			}
-		}
 	}
 
 	clone(): this {
-		const module = new TjsUnitedModule(this.config, this.types.clone())
-		module.spacingCallbacks.addAll(this.spacingCallbacks.entries)
-		return module as this
+		return new TjsUnitedModule(this.config, this.types) as this
 	}
 
 	private findRegex(classname: string) {
@@ -102,14 +78,8 @@ export class TjsUnitedModule extends TjsDynamicModule {
 		return unitedClassname.prefix + unitedClassname.classname.substr(match.match[0].length)
 	}
 
-	protected resolveLength(unit: string) {
-		const found = this.spacingCallbacks.match(unit)
-
-		if (found === null) {
-			return null
-		}
-
-		return found.t(unit)
+	protected resolveLength(unit: string): string | null {
+		return unit
 	}
 
 	classLooksInteresting(classname: string): boolean {
