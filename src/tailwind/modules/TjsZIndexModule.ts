@@ -9,7 +9,7 @@ export class TjsZIndexModule extends TjsUnitedModule {
 		super(config)
 
 		this.types.add(
-			/^z-index-/,
+			/^z-/,
 			(resolved: string, unitedClassname: TjsUnitedClassname) => {
 				return new Props(unitedClassname.fullClassname)
 					.withProp('z-index', resolved as number | 'auto')
