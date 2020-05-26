@@ -65,7 +65,7 @@ export class TjsSimpleModule extends TjsDynamicModule {
 		return this.defs.hasOwnProperty(classname)
 	}
 
-	protected genProps(classname: string): IProps {
+	protected genProps(classname: string): IProps | null {
 		const props = new Props(classname)
 		props.withProps(this.defs[classname])
 		return props

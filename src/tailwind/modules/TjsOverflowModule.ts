@@ -20,7 +20,7 @@ export class TjsOverflowModule extends TjsDynamicModule {
 		       this.scrollingRegex.test(classname)
 	}
 
-	genProps(classname: string): IProps {
+	protected genProps(classname: string): IProps | null {
 		const props = new Props(classname)
 
 		{

@@ -18,7 +18,7 @@ export class TjsFloatModule extends TjsSimpleModule {
 		super(config, tjsFloatDefs)
 	}
 
-	protected genProps(classname: string): IProps {
+	protected genProps(classname: string): IProps | null {
 		const props = super.genProps(classname)
 
 		if (classname === 'clearfix') {

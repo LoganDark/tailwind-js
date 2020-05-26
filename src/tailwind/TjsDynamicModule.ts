@@ -46,15 +46,19 @@ export abstract class TjsDynamicModule extends TjsGroupModule {
 
 	protected cache: {[classname: string]: boolean} = {}
 
-	protected abstract genProps(classname: string): IProps
+	protected abstract genProps(classname: string): IProps | null
 
 	genClass(classname: string): boolean {
 		if (this.cache.hasOwnProperty(classname)) {
 			return this.cache[classname]
 		}
 
-		this.addChild(this.genProps(classname))
+		const props = this.genProps(classname)
 
-		return this.cache[classname] = true
+		if (props !== null) {
+			this.addChild(props)
+		}
+
+		return this.cache[classname] = props !== null
 	}
 }

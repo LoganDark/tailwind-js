@@ -38,7 +38,7 @@ export interface IProps extends IBaseThing {
 	/**
 	 * The classname this concerns
 	 */
-	classname: string | null
+	classname: string
 
 	/**
 	 * The CSS selector suffix (`:hover`, etc)
