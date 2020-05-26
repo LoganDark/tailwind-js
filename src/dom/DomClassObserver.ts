@@ -108,7 +108,7 @@ export class DomClassObserver extends EventEmitter<DomClassObserverEvents> {
 	forget(classname: string) {
 		if (this.hasDiscovered(classname)) {
 			this._discovered.splice(this._discovered.indexOf(classname), 1)
-			delete this.discovered[classname]
+			delete this.discoveredLookup[classname]
 		}
 	}
 

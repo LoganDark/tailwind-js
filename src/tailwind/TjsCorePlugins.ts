@@ -11,8 +11,9 @@ import {TjsOverflowModule}       from './modules/TjsOverflowModule'
 import {TjsPositionModule}       from './modules/TjsPositionModule'
 import {TjsPreflightModule}      from './modules/TjsPreflightModule'
 import {TjsCorePluginName}       from './TjsConfig'
+import {TjsUpgradedConfig}       from './TjsUpgradedConfig'
 
-export const tjsCorePlugins = new Map<TjsCorePluginName, (TjsConfig) => IModule>()
+export const tjsCorePlugins = new Map<TjsCorePluginName, (config: TjsUpgradedConfig) => IModule>()
 
 tjsCorePlugins.set('preflight', config => new TjsPreflightModule(config))
 tjsCorePlugins.set('container', config => new TjsContainerModule(config))

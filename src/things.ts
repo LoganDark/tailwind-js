@@ -136,7 +136,7 @@ export interface IGroup extends IBaseThing, EventEmitter<IGroupEvents> {
 	 * Called when your group is being merged into another. Any caches, etc.
 	 * should be added to the other group.
 	 */
-	beingMergedInto(other: IGroup)
+	beingMergedInto(other: IGroup): void
 }
 
 /**
@@ -170,14 +170,14 @@ export interface IModule extends IPublicModule {
 	/**
 	 * Called right before {@link inject}
 	 */
-	init(generator: IGenerator)
+	init(generator: IGenerator): void
 
 	/**
 	 * Insert yourself into the generator's modules array. If in doubt, just
 	 * append `this` to the end, but if you have specific requirements, fulfill
 	 * them here
 	 */
-	inject(modules: IModule[])
+	inject(modules: IModule[]): void
 
 	/**
 	 * Returns true if the classname looks nice

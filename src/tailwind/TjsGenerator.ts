@@ -26,14 +26,16 @@ export class TjsGenerator extends Generator {
 			return obj.map(this.deepCopy) as T
 		}
 
-		const copy = {}
+		const copy = {} as T
 
-		const keys = Object.keys(obj) as any[]
-		keys.push(...Object.getOwnPropertySymbols(obj))
+		const keys = Object.keys(obj) as (keyof T)[]
+		keys.push(...(Object.getOwnPropertySymbols(obj) as (keyof T)[]))
 
 		for (const key of keys) {
 			const val = obj[key]
-			copy[key] = typeof val === 'object' ? TjsGenerator.deepCopy(val) : val
+			copy[key] = typeof val === 'object'
+			            ? TjsGenerator.deepCopy(val as T[keyof T] & object)
+			            : val
 		}
 
 		return copy as T
@@ -46,19 +48,19 @@ export class TjsGenerator extends Generator {
 	 * @param patch Patches to apply on top of it
 	 * @returns `base`
 	 */
-	static deepMerge<T extends object>(base: T, patch: RecursivePartial<T>): T {
+	static deepMerge<T extends object, P extends RecursivePartial<T>>(base: T, patch: P): T {
 		for (const key in Object.keys(patch)) {
 			if (base.hasOwnProperty(key)) {
-				const val = patch[key]
+				const val = patch[key as keyof P]
 
 				// noinspection JSDeprecatedSymbols
 				if (typeof val === 'object' && !Array.isArray(val)) {
-					this.deepMerge(base[key], val)
+					this.deepMerge(base[key as keyof T] as T[keyof T] & object, val as any as RecursivePartial<T[keyof T] & object>)
 				} else {
-					base[key] = val
+					base[key as keyof T] = val as any as T[keyof T]
 				}
 			} else {
-				base[key] = patch[key]
+				base[key as keyof T] = patch[key as keyof P] as any as T[keyof T]
 			}
 		}
 
