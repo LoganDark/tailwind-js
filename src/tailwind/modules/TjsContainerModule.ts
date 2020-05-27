@@ -40,22 +40,21 @@ export class TjsContainerModule extends TjsGroupModule {
 		}
 
 		const config = this.config.config.theme.container
+		const baseProps = new Props(classname)
 
-		if (config.center || (typeof config.padding === 'string' && config.padding.length > 0)) {
-			const baseProps = new Props(classname)
+		baseProps.set('width', '100%')
 
-			if (config.center) {
-				baseProps.set('margin-left', 'auto')
-				baseProps.set('margin-right', 'auto')
-			}
-
-			if (typeof config.padding === 'string' && config.padding.length > 0) {
-				baseProps.set('padding-left', config.padding)
-				baseProps.set('padding-right', config.padding)
-			}
-
-			this.addChild(baseProps)
+		if (config.center) {
+			baseProps.set('margin-left', 'auto')
+			baseProps.set('margin-right', 'auto')
 		}
+
+		if (typeof config.padding === 'string' && config.padding.length > 0) {
+			baseProps.set('padding-left', config.padding)
+			baseProps.set('padding-right', config.padding)
+		}
+
+		this.addChild(baseProps)
 
 		const medias = this.config.getScreenGroupsFlat()
 		const minWidthRegex = /\(min-width: ([^)]+)\)/
