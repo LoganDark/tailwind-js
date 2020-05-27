@@ -6,6 +6,11 @@ contributing to TJS, and NOT the latest version.
 
 Archive: <https://web.archive.org/web/20200527061643/https://tailwindcss.com/docs/installation/>
 
+Here's also a reference to the default configuration for that version of
+Tailwind, which does NOT include Inter as part of its font stack:
+
+Default config: <https://github.com/tailwindcss/tailwindcss/blob/fbd155d2dd6c619dfb8eb356a04e0e4c14cb9a23/stubs/defaultConfig.stub.js>
+
 This is the version of Tailwind that TJS is currently targeting. Any new
 features should not be added until everything from 1.4.5 is implemented. Once
 that's done, newer features will be added.
