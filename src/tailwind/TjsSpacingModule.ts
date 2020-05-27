@@ -12,10 +12,14 @@ export class TjsSpacingModule extends TjsUnitedModule {
 		this.loadSpacing(config.config.theme.spacing)
 	}
 
-	clone() {
-		const module = new TjsSpacingModule(this.config, this.types)
-		module.spacingCallbacks.addAll(this.spacingCallbacks.entries)
-		return module as this
+	protected cloneDataInto<T extends this>(other: T) {
+		other.spacingCallbacks.addAll(this.spacingCallbacks.entries)
+
+		return other
+	}
+
+	clone(): this {
+		return this.cloneDataInto(new TjsSpacingModule(this.config, this.types.clone()) as this)
 	}
 
 	protected loadSpacing(spacing: TjsSpacing) {

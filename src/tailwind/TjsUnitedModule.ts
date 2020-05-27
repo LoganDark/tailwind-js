@@ -26,7 +26,7 @@ export class TjsUnitedModule extends TjsDynamicModule {
 	}
 
 	clone(): this {
-		return new TjsUnitedModule(this.config, this.types) as this
+		return this.cloneDataInto(new TjsUnitedModule(this.config, this.types) as this)
 	}
 
 	private findRegex(classname: string) {

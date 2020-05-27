@@ -20,6 +20,20 @@ export abstract class TjsDynamicModule extends TjsGroupModule {
 		this.name = name
 	}
 
+	protected cloneCacheInto(other: TjsDynamicModule) {
+		// make sure the other module knows not to re-generate our classes
+		for (const classname in Object.keys(this.cache)) {
+			if (!other.cache.hasOwnProperty(classname)) {
+				other.cache[classname] = this.cache[classname]
+			}
+		}
+	}
+
+	protected cloneDataInto<T extends this>(other: T) {
+		this.cloneCacheInto(other)
+		return other
+	}
+
 	abstract clone(): this
 
 	shouldMergeWith(other: IGroup): boolean {
@@ -35,11 +49,7 @@ export abstract class TjsDynamicModule extends TjsGroupModule {
 
 		// our classes are going to be merged in, so make sure the other module
 		// knows not to re-generate them
-		for (const classname in Object.keys(this.cache)) {
-			if (!other.cache.hasOwnProperty(classname)) {
-				other.cache[classname] = this.cache[classname]
-			}
-		}
+		this.cloneCacheInto(other)
 	}
 
 	abstract classLooksInteresting(classname: string): boolean

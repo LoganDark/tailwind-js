@@ -15,6 +15,6 @@ export class TjsPositionModule extends TjsSimpleModule {
 	}
 
 	clone(): this {
-		return new TjsPositionModule(this.config) as this
+		return this.cloneDataInto(new TjsPositionModule(this.config) as this)
 	}
 }

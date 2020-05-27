@@ -9,7 +9,7 @@ export class TjsOverflowModule extends TjsDynamicModule {
 	}
 
 	clone(): this {
-		return new TjsOverflowModule(this.config) as this
+		return this.cloneDataInto(new TjsOverflowModule(this.config) as this)
 	}
 
 	overflowRegex = /^(overflow(?:-[xy])?)-(auto|hidden|visible|scroll)$/

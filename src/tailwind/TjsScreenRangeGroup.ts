@@ -49,7 +49,7 @@ export class TjsScreenRangeGroup extends MediaQueryGroup {
 	}
 
 	clone(): this {
-		return new TjsScreenRangeGroup(this.range, this.name) as this
+		return this.cloneDataInto(new TjsScreenRangeGroup(this.range, this.name) as this)
 	}
 
 	static groupsForBreakpoint(breakpoint: TjsScreenBreakpoint, name: string): TjsScreenRangeGroup[] {

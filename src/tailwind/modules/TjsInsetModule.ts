@@ -42,6 +42,6 @@ export class TjsInsetModule extends TjsSpacingModule {
 	}
 
 	clone(): this {
-		return new TjsInsetModule(this.config) as this
+		return this.cloneDataInto(new TjsInsetModule(this.config) as this)
 	}
 }

@@ -12,6 +12,6 @@ export class TjsBoxSizingModule extends TjsSimpleModule {
 	}
 
 	clone(): this {
-		return new TjsBoxSizingModule(this.config) as this
+		return this.cloneDataInto(new TjsBoxSizingModule(this.config) as this)
 	}
 }

@@ -28,6 +28,6 @@ export class TjsDisplayModule extends TjsSimpleModule {
 	}
 
 	clone(): this {
-		return new TjsDisplayModule(this.config) as this
+		return this.cloneDataInto(new TjsDisplayModule(this.config) as this)
 	}
 }

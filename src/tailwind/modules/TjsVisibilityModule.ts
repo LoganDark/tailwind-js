@@ -12,6 +12,6 @@ export class TjsVisibilityModule extends TjsSimpleModule {
 	}
 
 	clone(): this {
-		return new TjsVisibilityModule(this.config) as this
+		return this.cloneDataInto(new TjsVisibilityModule(this.config) as this)
 	}
 }

@@ -14,6 +14,6 @@ export class TjsClearModule extends TjsSimpleModule {
 	}
 
 	clone(): this {
-		return new TjsClearModule(this.config) as this
+		return this.cloneDataInto(new TjsClearModule(this.config) as this)
 	}
 }

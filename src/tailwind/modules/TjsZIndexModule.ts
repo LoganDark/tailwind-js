@@ -18,7 +18,7 @@ export class TjsZIndexModule extends TjsUnitedModule {
 	}
 
 	clone(): this {
-		return new TjsZIndexModule(this.config) as this
+		return this.cloneDataInto(new TjsZIndexModule(this.config) as this)
 	}
 
 	protected resolveLength(unit: string): string | null {

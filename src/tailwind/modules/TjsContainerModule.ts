@@ -11,7 +11,7 @@ export class TjsContainerModule extends TjsGroupModule {
 	}
 
 	clone(): this {
-		return new TjsContainerModule(this.config) as this
+		return this.cloneDataInto(new TjsContainerModule(this.config) as this)
 	}
 
 	shouldMergeWith(other: IGroup): boolean {

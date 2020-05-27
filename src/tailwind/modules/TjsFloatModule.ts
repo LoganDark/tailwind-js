@@ -19,7 +19,7 @@ export class TjsFloatModule extends TjsSimpleModule {
 	}
 
 	clone(): this {
-		return new TjsFloatModule(this.config) as this
+		return this.cloneDataInto(new TjsFloatModule(this.config) as this)
 	}
 
 	protected genProps(classname: string): IProps | null {

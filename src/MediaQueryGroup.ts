@@ -18,7 +18,7 @@ export class MediaQueryGroup extends BlockGroup {
 	}
 
 	clone(): this {
-		return new MediaQueryGroup(this.mediaQuery) as this
+		return this.cloneDataInto(new MediaQueryGroup(this.mediaQuery) as this)
 	}
 
 	shouldMergeWith(other: IGroup): boolean {

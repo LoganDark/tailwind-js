@@ -5,6 +5,8 @@ export abstract class GroupModule extends Group implements IModule {
 	// noinspection JSUnusedGlobalSymbols
 	generator: IGenerator | null = null
 
+	abstract clone(): this
+
 	init(generator: IGenerator) {}
 
 	inject(modules: IModule[]) {

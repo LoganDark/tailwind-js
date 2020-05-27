@@ -52,7 +52,7 @@ export class TjsSimpleModule extends TjsDynamicModule {
 	}
 
 	clone(): this {
-		return new TjsSimpleModule(this.config, this.defs) as this
+		return this.cloneDataInto(new TjsSimpleModule(this.config, this.defs) as this)
 	}
 
 	shouldMergeWith(other: IGroup): boolean {

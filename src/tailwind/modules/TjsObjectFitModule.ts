@@ -15,6 +15,6 @@ export class TjsObjectFitModule extends TjsSimpleModule {
 	}
 
 	clone(): this {
-		return new TjsObjectFitModule(this.config) as this
+		return this.cloneDataInto(new TjsObjectFitModule(this.config) as this)
 	}
 }

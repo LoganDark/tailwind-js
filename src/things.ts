@@ -17,7 +17,8 @@ interface IBaseThing {
 
 	/**
 	 * Create a new instance of this group with the exact same properties as the
-	 * existing one. They should act exactly the same
+	 * existing one. The new instance should act exactly the same, and contain
+	 * clones of this one's children if this is a group
 	 */
 	clone(): this
 }
