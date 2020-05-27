@@ -30,6 +30,7 @@ export abstract class TjsDynamicModule extends TjsGroupModule {
 	}
 
 	protected cloneDataInto<T extends this>(other: T) {
+		super.cloneDataInto(other)
 		this.cloneCacheInto(other)
 		return other
 	}
