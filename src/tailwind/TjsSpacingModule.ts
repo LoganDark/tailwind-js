@@ -14,6 +14,7 @@ export class TjsSpacingModule extends TjsUnitedModule {
 
 	protected cloneDataInto<T extends this>(other: T) {
 		super.cloneDataInto(other)
+		other.spacingCallbacks.clear()
 		other.spacingCallbacks.addAll(this.spacingCallbacks.entries)
 		return other
 	}

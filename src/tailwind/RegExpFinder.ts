@@ -63,4 +63,8 @@ export class RegExpFinder<T> {
 		clone.addAll(this.entries)
 		return clone
 	}
+
+	clear() {
+		this._entries.splice(0, this._entries.length)
+	}
 }
