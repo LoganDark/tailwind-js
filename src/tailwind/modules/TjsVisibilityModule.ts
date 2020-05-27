@@ -10,4 +10,8 @@ export class TjsVisibilityModule extends TjsSimpleModule {
 	constructor(config: TjsUpgradedConfig) {
 		super(config, tjsBoxSizingDefs)
 	}
+
+	clone(): this {
+		return new TjsVisibilityModule(this.config) as this
+	}
 }

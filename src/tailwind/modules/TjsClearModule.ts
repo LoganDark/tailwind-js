@@ -12,4 +12,8 @@ export class TjsClearModule extends TjsSimpleModule {
 	constructor(config: TjsUpgradedConfig) {
 		super(config, tjsClearDefs)
 	}
+
+	clone(): this {
+		return new TjsClearModule(this.config) as this
+	}
 }

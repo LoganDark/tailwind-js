@@ -10,4 +10,8 @@ export class TjsBoxSizingModule extends TjsSimpleModule {
 	constructor(config: TjsUpgradedConfig) {
 		super(config, tjsBoxSizingDefs)
 	}
+
+	clone(): this {
+		return new TjsBoxSizingModule(this.config) as this
+	}
 }

@@ -13,4 +13,8 @@ export class TjsObjectFitModule extends TjsSimpleModule {
 	constructor(config: TjsUpgradedConfig) {
 		super(config, tjsObjectFitDefs)
 	}
+
+	clone(): this {
+		return new TjsObjectFitModule(this.config) as this
+	}
 }

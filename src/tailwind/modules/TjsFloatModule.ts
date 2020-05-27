@@ -18,6 +18,10 @@ export class TjsFloatModule extends TjsSimpleModule {
 		super(config, tjsFloatDefs)
 	}
 
+	clone(): this {
+		return new TjsFloatModule(this.config) as this
+	}
+
 	protected genProps(classname: string): IProps | null {
 		const props = super.genProps(classname)
 

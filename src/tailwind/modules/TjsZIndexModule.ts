@@ -17,6 +17,10 @@ export class TjsZIndexModule extends TjsUnitedModule {
 		)
 	}
 
+	clone(): this {
+		return new TjsZIndexModule(this.config) as this
+	}
+
 	protected resolveLength(unit: string): string | null {
 		return TjsZIndexModule.zIndexRegex.test(unit) ? unit : null
 	}

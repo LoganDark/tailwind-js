@@ -26,4 +26,8 @@ export class TjsDisplayModule extends TjsSimpleModule {
 	constructor(config: TjsUpgradedConfig) {
 		super(config, tjsDisplayDefs)
 	}
+
+	clone(): this {
+		return new TjsDisplayModule(this.config) as this
+	}
 }

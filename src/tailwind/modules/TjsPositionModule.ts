@@ -13,4 +13,8 @@ export class TjsPositionModule extends TjsSimpleModule {
 	constructor(config: TjsUpgradedConfig) {
 		super(config, tjsPositionDefs)
 	}
+
+	clone(): this {
+		return new TjsPositionModule(this.config) as this
+	}
 }

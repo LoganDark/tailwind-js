@@ -40,4 +40,8 @@ export class TjsInsetModule extends TjsSpacingModule {
 
 		this.loadSpacing(config.config.theme.inset)
 	}
+
+	clone(): this {
+		return new TjsInsetModule(this.config) as this
+	}
 }

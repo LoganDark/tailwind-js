@@ -78,4 +78,14 @@ export class TjsGenerator extends Generator {
 
 		this.registerModules(this.config)
 	}
+
+	clone(): this {
+		const gen = new TjsGenerator(this.config.config)
+
+		for (const module of this._modules) {
+			gen.addChild(module.clone())
+		}
+
+		return gen as this
+	}
 }
