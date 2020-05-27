@@ -78,6 +78,11 @@ export class TjsUnitedModule extends TjsDynamicModule {
 		return unitedClassname.prefix + unitedClassname.classname.substr(match.match[0].length)
 	}
 
+	/**
+	 * For some class example-5, this function will be called with '5' and
+	 * should return the string to use in the CSS. If null, then this unit is
+	 * invalid and the class will not be generated
+	 */
 	protected resolveLength(unit: string): string | null {
 		return unit
 	}

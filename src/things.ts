@@ -184,6 +184,10 @@ export interface IModule extends IPublicModule {
 	 *
 	 * {@link genClass} will only be called for this classname if this method
 	 * returns true
+	 *
+	 * This method returning true does not *guarantee* that a class will be
+	 * generated, but generally you should try to be as accurate as possible.
+	 * It is still just a filter and is meant to be fast, though
 	 */
 	classLooksInteresting(classname: string): boolean
 
