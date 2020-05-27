@@ -1,8 +1,10 @@
+# TODO
+
 For your convenience, a complete archive on the Wayback Machine has been made,
 including all documentation pages. You should use this as a reference when
 contributing to TJS, and NOT the latest version.
 
-Archive: https://web.archive.org/web/20200527061643/https://tailwindcss.com/docs/installation/
+Archive: <https://web.archive.org/web/20200527061643/https://tailwindcss.com/docs/installation/>
 
 This is the version of Tailwind that TJS is currently targeting. Any new
 features should not be added until everything from 1.4.5 is implemented. Once
