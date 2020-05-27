@@ -1,7 +1,7 @@
 # Developing on Tailwind-JS
 
 Right now, all TJS needs is some more Tailwind modules. See `TODO.md` for a list
-of he modules that it needs.
+of the modules that it needs.
 
 ## Creating a new module
 
