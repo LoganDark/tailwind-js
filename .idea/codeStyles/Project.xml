@@ -37,7 +37,14 @@
       <option name="ALIGN_TABLE_FIELD_ASSIGN" value="true" />
     </Lua>
     <MarkdownNavigatorCodeStyleSettings>
-      <option name="RIGHT_MARGIN" value="72" />
+      <option name="HEADING_PREFERENCE" value="1" />
+      <option name="ATX_HEADER_TRAILING_MARKER" value="-1" />
+      <option name="BULLET_LIST_ITEM_MARKER" value="1" />
+      <option name="CODE_FENCE_MATCH_CLOSING_MARKER" value="true" />
+      <option name="CODE_FENCE_MARKER_TYPE" value="1" />
+      <option name="DEFINITION_MARKER_TYPE" value="1" />
+      <option name="DEFINITION_MARKER_SPACES" value="1" />
+      <option name="RIGHT_MARGIN" value="80" />
     </MarkdownNavigatorCodeStyleSettings>
     <TypeScriptCodeStyleSettings>
       <option name="USE_SEMICOLON_AFTER_STATEMENT" value="false" />
