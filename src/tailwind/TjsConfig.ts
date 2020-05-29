@@ -65,6 +65,10 @@ export const defaultTjsConfig: TjsConfig = {
 		spacing  : {
 			'^[-+]?(?:\\d+\\.?|\\d*\\.\\d+)$': (unit) => (+unit * 0.25) + 'rem',
 			'^[-+]?\\d+px$'                  : (unit) => unit,
+			'^[-+]?\\d+/\\d+$'               : (unit: string) => {
+				const split = unit.split('/')
+				return +split[0] / +split[1] * 100 + '%'
+			},
 			'px'                             : '1px',
 			'auto'                           : 'auto'
 		},
