@@ -29,11 +29,16 @@ export interface TjsContainerModuleConfig {
 }
 
 export interface TjsCorePluginConfigs {
-	container: TjsContainerModuleConfig,
+	container: TjsContainerModuleConfig
 	inset: TjsSpacing
+	padding: TjsSpacing
+	margin: TjsSpacing
+	space: TjsSpacing
 }
 
-export type TjsCorePluginName = 'preflight' | 'container' | 'boxSizing' | 'display' | 'float' | 'clear' | 'objectFit' | 'objectPosition' | 'overflow' | 'position' | 'inset' | 'visibility' | 'zIndex'
+export type TjsCorePluginName =
+	'preflight' | 'container' | 'boxSizing' | 'display' | 'float' | 'clear' | 'objectFit' | 'objectPosition' | 'overflow' | 'position' | 'inset' | 'visibility' | 'zIndex' |
+	'padding' | 'margin' | 'space'
 
 export type TjsCorePlugins = {
 	[plugin in TjsCorePluginName]: boolean
@@ -76,7 +81,11 @@ export const defaultTjsConfig: TjsConfig = {
 			center : false,
 			padding: ''
 		},
-		inset    : {}
+		inset    : {},
+
+		padding: {},
+		margin : {},
+		space  : {}
 	},
 	corePlugins: {
 		preflight     : true,
@@ -91,6 +100,10 @@ export const defaultTjsConfig: TjsConfig = {
 		position      : true,
 		inset         : true,
 		visibility    : true,
-		zIndex        : true
+		zIndex        : true,
+
+		padding: true,
+		margin : true,
+		space  : true
 	}
 }

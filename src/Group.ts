@@ -11,7 +11,7 @@ export abstract class Group extends EventEmitter<IGroupEvents> implements IGroup
 
 	protected children: IThing[] = []
 
-	protected cloneDataInto<T extends this>(other: T) {
+	cloneDataInto<T extends this>(other: T) {
 		for (const child of this.children) {
 			other.addChild(child.clone())
 		}

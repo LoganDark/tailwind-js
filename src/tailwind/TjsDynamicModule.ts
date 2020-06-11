@@ -1,4 +1,4 @@
-import {IGroup, IProps}    from '../things'
+import {IGroup}            from '../things'
 import {TjsGroupModule}    from './TjsGroupModule'
 import {TjsUpgradedConfig} from './TjsUpgradedConfig'
 
@@ -7,7 +7,7 @@ import {TjsUpgradedConfig} from './TjsUpgradedConfig'
  * generating your classes when needed.
  *
  * Usage: Implement {@link clone}, {@link classLooksInteresting}, and
- * {@link genProps} and you should be set.
+ * {@link generate} and you should be set.
  *
  * Try to make sure {@link name} is unique, or else just don't define it and
  * instead redefine {@link shouldMergeWith} (with a call to super of course)
@@ -29,7 +29,7 @@ export abstract class TjsDynamicModule extends TjsGroupModule {
 		}
 	}
 
-	protected cloneDataInto<T extends this>(other: T) {
+	cloneDataInto<T extends this>(other: T) {
 		super.cloneDataInto(other)
 		this.cloneCacheInto(other)
 		return other
@@ -57,19 +57,13 @@ export abstract class TjsDynamicModule extends TjsGroupModule {
 
 	protected cache: {[classname: string]: boolean} = {}
 
-	protected abstract genProps(classname: string): IProps | null
+	protected abstract generate(classname: string): boolean
 
 	genClass(classname: string): boolean {
 		if (this.cache.hasOwnProperty(classname)) {
 			return this.cache[classname]
 		}
 
-		const props = this.genProps(classname)
-
-		if (props !== null) {
-			this.addChild(props)
-		}
-
-		return this.cache[classname] = props !== null
+		return this.cache[classname] = this.generate(classname)
 	}
 }

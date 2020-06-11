@@ -12,7 +12,7 @@ export class TjsSpacingModule extends TjsUnitedModule {
 		this.loadSpacing(config.config.theme.spacing)
 	}
 
-	protected cloneDataInto<T extends this>(other: T) {
+	cloneDataInto<T extends this>(other: T) {
 		super.cloneDataInto(other)
 		other.spacingCallbacks.clear()
 		other.spacingCallbacks.addAll(this.spacingCallbacks.entries)

@@ -1,4 +1,3 @@
-import {IProps}                         from '../../things'
 import {TjsSimpleDefs, TjsSimpleModule} from '../TjsSimpleModule'
 import {TjsUpgradedConfig}              from '../TjsUpgradedConfig'
 
@@ -22,17 +21,18 @@ export class TjsFloatModule extends TjsSimpleModule {
 		return this.cloneDataInto(new TjsFloatModule(this.config) as this)
 	}
 
-	protected genProps(classname: string): IProps | null {
+	protected generate(classname: string): boolean {
 		const props = super.genProps(classname)
 
 		if (props === null) {
-			return null
+			return false
 		}
 
 		if (classname === 'clearfix') {
 			props.selectorSuffix = '::after'
 		}
 
-		return props
+		this.addChild(props)
+		return true
 	}
 }

@@ -11,8 +11,12 @@ export class TjsInsetModule extends TjsSpacingModule {
 		this.types.add(
 			/^(top|bottom|left|right)-/,
 			(resolved: string, unitedClassname: TjsUnitedClassname, match: RegExpMatchArray) => {
-				return new Props(unitedClassname.fullClassname)
-					.withProp(match[1] as keyof Properties, resolved)
+				this.addChild(
+					new Props(unitedClassname.fullClassname)
+						.withProp(match[1] as keyof Properties, resolved)
+				)
+
+				return true
 			}
 		)
 
@@ -34,7 +38,9 @@ export class TjsInsetModule extends TjsSpacingModule {
 					props.set('bottom', resolved)
 				}
 
-				return props
+				this.addChild(props)
+
+				return true
 			}
 		)
 

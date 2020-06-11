@@ -11,8 +11,12 @@ export class TjsZIndexModule extends TjsUnitedModule {
 		this.types.add(
 			/^z-/,
 			(resolved: string, unitedClassname: TjsUnitedClassname) => {
-				return new Props(unitedClassname.fullClassname)
-					.withProp('z-index', resolved as number | 'auto')
+				this.addChild(
+					new Props(unitedClassname.fullClassname)
+						.withProp('z-index', resolved as number | 'auto')
+				)
+
+				return true
 			}
 		)
 	}

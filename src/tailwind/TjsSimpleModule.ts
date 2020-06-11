@@ -65,9 +65,14 @@ export class TjsSimpleModule extends TjsDynamicModule {
 		return this.defs.hasOwnProperty(classname)
 	}
 
-	protected genProps(classname: string): IProps | null {
+	protected genProps(classname: string): IProps {
 		const props = new Props(classname)
 		props.withProps(this.defs[classname])
 		return props
+	}
+
+	protected generate(classname: string): boolean {
+		this.addChild(this.genProps(classname))
+		return true
 	}
 }

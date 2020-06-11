@@ -1,4 +1,3 @@
-import {IProps}                          from '../things'
 import {RegExpFinder, RegExpFinderMatch} from './RegExpFinder'
 import {TjsDynamicModule}                from './TjsDynamicModule'
 import {TjsUpgradedConfig}               from './TjsUpgradedConfig'
@@ -13,7 +12,7 @@ export type TjsUnitedCallback = (
 	resolvedLength: string,
 	unitedClassname: TjsUnitedClassname,
 	match: RegExpMatchArray
-) => IProps | null
+) => boolean
 
 export type TjsUnitedMatch = RegExpFinderMatch<TjsUnitedCallback>
 
@@ -91,7 +90,7 @@ export class TjsUnitedModule extends TjsDynamicModule {
 		return this.findRegex(this.withoutPrefix(classname)) !== null
 	}
 
-	protected genProps(classname: string): IProps | null {
+	protected generate(classname: string): boolean {
 		const unitedClassname = this.makeUnited(classname)
 		const match = this.findRegex(this.getMatchClassname(unitedClassname))
 
@@ -103,7 +102,7 @@ export class TjsUnitedModule extends TjsDynamicModule {
 		const resolved = this.resolveLength(length)
 
 		if (resolved === null) {
-			return null
+			return false
 		}
 
 		return match.t(resolved, unitedClassname, match.match)

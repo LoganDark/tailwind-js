@@ -1,7 +1,7 @@
-import {Props}              from '../../Props'
-import {IProps, Properties} from '../../things'
-import {TjsDynamicModule}   from '../TjsDynamicModule'
-import {TjsUpgradedConfig}  from '../TjsUpgradedConfig'
+import {Props}             from '../../Props'
+import {Properties}        from '../../things'
+import {TjsDynamicModule}  from '../TjsDynamicModule'
+import {TjsUpgradedConfig} from '../TjsUpgradedConfig'
 
 export class TjsOverflowModule extends TjsDynamicModule {
 	constructor(config: TjsUpgradedConfig) {
@@ -20,20 +20,24 @@ export class TjsOverflowModule extends TjsDynamicModule {
 		       this.scrollingRegex.test(classname)
 	}
 
-	protected genProps(classname: string): IProps | null {
+	protected generate(classname: string): boolean {
 		const props = new Props(classname)
 
 		{
 			const scrollingMatch = this.scrollingRegex.exec(classname)
 
 			if (scrollingMatch !== null) {
-				return props.withProp('-webkit-overflow-scrolling' as keyof Properties, scrollingMatch[1])
+				props.set('-webkit-overflow-scrolling' as keyof Properties, scrollingMatch[1])
+				this.addChild(props)
+				return true
 			}
 
 			const overflowMatch = this.overflowRegex.exec(classname)
 
 			if (overflowMatch !== null) {
-				return props.withProp(overflowMatch[1] as keyof Properties, overflowMatch[2])
+				props.set(overflowMatch[1] as keyof Properties, overflowMatch[2])
+				this.addChild(props)
+				return true
 			}
 		}
 
