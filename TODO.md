@@ -18,6 +18,7 @@ that's done, newer features will be added.
 Done:
 - The entire Layout section
 - Spacing section
+- Sizing section
 
 Partially done:
 - Preflight (doesn't support custom font stack, yet, waiting on Font Family)
@@ -26,7 +27,7 @@ To do:
 - Flexbox section
 - Grid section
 - ~~Spacing section~~
-- Sizing section
+- ~~Sizing section~~
 - Typography section
 - Backgrounds section
 - Borders section

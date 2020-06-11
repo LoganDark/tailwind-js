@@ -20,7 +20,7 @@ export class TjsSpacingModule extends TjsUnitedModule {
 	}
 
 	clone(): this {
-		return this.cloneDataInto(new TjsSpacingModule(this.config, this.types.clone()) as this)
+		return this.cloneDataInto(new TjsSpacingModule(this.config) as this)
 	}
 
 	protected loadSpacing(spacing: TjsSpacing) {

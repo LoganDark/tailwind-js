@@ -24,6 +24,13 @@ export class TjsUnitedModule extends TjsDynamicModule {
 		this.types = types
 	}
 
+	cloneDataInto<T extends this>(other: T) {
+		super.cloneDataInto(other)
+		other.types.clear()
+		other.types.addAll(this.types.entries)
+		return other
+	}
+
 	clone(): this {
 		return this.cloneDataInto(new TjsUnitedModule(this.config, this.types) as this)
 	}
